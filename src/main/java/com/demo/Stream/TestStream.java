@@ -4,10 +4,8 @@ import com.demo.classLoder.Student;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.concurrent.locks.ReentrantLock;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -64,7 +62,10 @@ public class TestStream {
             //需要注意:如果有重复的key,会报错Duplicate key
             //可以用(k1, k2)-> k1来设置,如果有重复key,则保留k1,舍弃k2
             Map<Integer, Student> stuMap = listp.stream().collect(Collectors.toMap(Student::getAge, a->a, (k1, k2)->k1));
-            System.out.println(stuMap);
+            System.out.println("转换Map" + stuMap);
+
+            Set<Student> stuSet = listp.stream().collect(Collectors.toSet());
+            System.out.println("转换Set" + stuSet);
         }
 
     }
